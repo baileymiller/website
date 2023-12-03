@@ -1,0 +1,70 @@
+body {
+  padding-bottom: 50px;
+}
+
+#profile-pic {
+  height: 250px;
+  width: 250px;
+  display: block;
+  padding: 0.25rem;
+  border: 1px solid #dee2e6;
+  border-radius:  0.25rem;
+}
+
+.profile-row {
+  margin-bottom: 8px;
+  padding-bottom: 0px;
+}
+
+.publication-thumbnail {
+  width: 120px;
+  height: 120px;
+}
+
+.citation-container {
+  overflow: hidden;
+}
+
+.citation-content {
+  position: absolute;
+  border-radius: 10px;
+  background-color:white;
+  opacity: 0.95;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: Roboto;
+  color: black;
+  display: none;
+}
+
+.citation-content:hover, .citation:hover + .citation-content {
+  position: absolute;
+  display: block;
+  box-shadow: 7px 6px 33px -8px rgba(0,0,0,0.86);
+  z-index:1000;
+}
+
+.project-video {
+  height: 250px;
+  width: calc(250px * (16 / 9));
+}
+
+.code-copy-btn {
+  position: relative;
+  float: right;
+  border: none;
+  background-color: #e7e7e7;
+  border-radius: 5px; 
+}
+
+.code-copy-btn:hover {
+  background-color: #d0d0d0;
+}
+
+.code-background {
+  background-color: #f0f0f0;
+  padding: 5px;
+  border: 1px solid #ddd;
+  overflow: auto;
+  border-radius: 5px; 
+}
