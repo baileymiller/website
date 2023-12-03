@@ -266,8 +266,7 @@ class Project:
                videos = [], 
                resources = ProjectResources(), 
                acknowledgements= '', 
-               citation = '',
-               use_relative_paths = False):
+               citation = ''):
     self.image = image
     self.image_caption = image_caption
     self.abstract = abstract
@@ -275,7 +274,6 @@ class Project:
     self.resources = resources
     self.acknowledgements = acknowledgements
     self.citation = citation
-    self.use_relative_paths = False
 
   def create_section(self, name, content):
     return f'''
