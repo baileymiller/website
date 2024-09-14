@@ -1,145 +1,153 @@
 <!DOCTYPE html>
-<html>
- <head>
-  <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
-  <link href="assets/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-  <link href="assets/style.css" rel="stylesheet" type="text/css"/>
- </head>
- <body>
-  <div class="container">
-   <div class="d-flex pl-5 pt-5 justify-content-start">
-    <div>
-     <img alt="Bailey" class="float-left" id="profile-pic" src="https://placehold.co/400"/>
-    </div>
-    <div class="col">
-     <div class="d-block profile-row">
-      <h1>
-       Your Name
-      </h1>
-     </div>
-     <div class="d-block profile-row">
-      <i class="fa fa-map-marker">
-      </i>
-      <a class="pl-2" href="https://www.cs.cmu.edu">
-       Carnegie-Mellon University
-      </a>
-     </div>
-     <div class="d-block profile-row">
-      <i class="fa fa-envelope">
-      </i>
-      <a class="pl-2" href="mailto:your-email@gmail.com">
-       your-email@gmail.com
-      </a>
-     </div>
-     <div class="d-block profile-row">
-      <i class="fa fa-github">
-      </i>
-      <a class="pl-2" href="https://github.com">
-       Github
-      </a>
-     </div>
-     <div class="d-block profile-row">
-      <i class="fa fa-graduation-cap">
-      </i>
-      <a class="pl-2" href="https://scholar.google.com">
-       Google Scholar
-      </a>
-     </div>
-     <div class="d-block profile-row">
-      <i class="fa fa-file">
-      </i>
-      <a class="pl-2" href="data/documents/cv.pdf">
-       CV
-      </a>
-     </div>
-    </div>
-   </div>
-  </div>
-  <div class="container">
-   <div class="d-flex flex-column pl-5 pt-3">
-    <div>
-     <p>
-      Add your bio here
-     </p>
-    </div>
-    <div class="pt-2">
-     <h3>
-      Publications
-     </h3>
-     <hr/>
-     <div class="pt-1" id="publications-list">
-      <div>
-       <div class="d-flex flex-row pb-4">
-        <img class="publication-thumbnail img-responsive img-thumbnail" src="https://placehold.co/400.png"/>
-        <div class="d-flex flex-column pl-4">
-         <h5>
-          Your Project Name
-         </h5>
-         <div>
-          <b>
-           Your Name
-          </b>
-          , Coauthor Name
-         </div>
-         <div>
-          <i>
-           ACM Transactions on Graphics
-          </i>
-         </div>
-         <div class="d-flex flex-row justify-content-start pt-2">
-          <div class="pr-3">
-           <i class="fa fa-globe">
-           </i>
-           <a href="project/pub1">
-            project
-           </a>
-          </div>
-          <div class="pr-3">
-           <i class="fa fa-file-pdf-o">
-           </i>
-           <a href="data/papers/pub1.pdf">
-            paper
-           </a>
-          </div>
-          <div class="pr-3">
-           <i class="fa fa-book">
-           </i>
-           <a href="https://www.acm.org/">
-            publisher version
-           </a>
-          </div>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
-     <div class="pb-5">
-      (*, &dagger; indicates equal contribution)
-     </div>
-    </div>
-    <div>
-     <h3>
-      Teaching Assistant
-     </h3>
-     <hr/>
-     <ul>
-      <li>
-       <h6>
-        Course 1
-            
-            Fall 2023
-       </h6>
-       <li>
-        <h6>
-         Course 2
-            
-            Spring 2021
-        </h6>
-       </li>
-      </li>
-     </ul>
-    </div>
-   </div>
-  </div>
- </body>
-</html>
+ <html><head><meta charset="utf-8"/><link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/><link href="assets/bootstrap.min.css" rel="stylesheet" type="text/css"/><link href="assets/style.css" rel="stylesheet" type="text/css"/></head><body>
+<div class="container">
+<div class="d-flex pl-5 pt-5 justify-content-start">
+<div>
+<img alt="Bailey" class="float-left" id="profile-pic" src="data/images/profile.png"/>
+</div>
+<div class="col">
+<div class="d-block profile-row">
+<h1>Your Name</h1>
+</div>
+<div class="d-block profile-row">
+<i class="fa fa-fw fa-map-marker"></i>
+<a class="pl-2" href="https://www.cs.cmu.edu">
+            Carnegie-Mellon University
+          </a>
+</div>
+<div class="d-block profile-row">
+<i class="fa fa-fw fa-envelope"></i>
+<a class="pl-2" href="mailto:your-email@gmail.com">
+            your-email@gmail.com
+          </a>
+</div>
+<div class="d-block profile-row">
+<i class="fa fa-fw fa-github"></i>
+<a class="pl-2" href="https://github.com">
+            Github
+          </a>
+</div>
+<div class="d-block profile-row">
+<i class="fa fa-fw fa-graduation-cap"></i>
+<a class="pl-2" href="https://scholar.google.com">
+            Google Scholar
+          </a>
+</div>
+<div class="d-block profile-row">
+<i class="fa fa-fw fa-file"></i>
+<a class="pl-2" href="data/documents/cv.pdf">
+            CV
+          </a>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="d-flex flex-column pl-5 pt-3">
+<div>
+<p>Add your bio here</p>
+</div>
+<div>
+<h4>Publications</h4>
+<hr/>
+<div>
+<div class="d-flex flex-row pb-4 align-items-center">
+<img class="thumbnail img-responsive" src="data/images/thumbnails/box.png"/>
+<div class="d-flex flex-column pl-4">
+<span>
+<a class="item-title" href="project/pub1">Your Project Name 1</a>
+</span>
+<div>
+<b>Your Name</b>, Coauthor Name and Coauthor Other
+              </div>
+<div>
+                ACM Transactions on Graphics (SIGGRAPH), 2024
+              </div>
+<div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex flex-row pb-4 align-items-center">
+<img class="thumbnail img-responsive" src="data/images/thumbnails/glass.png"/>
+<div class="d-flex flex-column pl-4">
+<span>
+<a class="item-title" href="project/pub1">Your Project Name 2</a>
+</span>
+<div>
+<b>Your Name</b> and Coauthor Name
+              </div>
+<div>
+                ACM Transactions on Graphics (SIGGRAPH), 2023
+              </div>
+<div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex flex-row pb-4 align-items-center">
+<img class="thumbnail img-responsive" src="data/images/thumbnails/cloud.png"/>
+<div class="d-flex flex-column pl-4">
+<span>
+<a class="item-title" href="project/pub1">Your Project Name 3</a>
+</span>
+<div>
+<b>Your Name</b> and Coauthor Name
+              </div>
+<div>
+                ACM Transactions on Graphics (SIGGRAPH), 2022
+              </div>
+<div>
+</div>
+</div>
+</div>
+</div>
+<div class="pb-5">(*, † indicate equal contribution)</div>
+</div>
+<div>
+<h4>Teaching</h4>
+<hr/>
+<div>
+<div class="d-flex flex-row pb-4 align-items-center">
+<img class="thumbnail img-responsive" src="data/images/thumbnails/class.png"/>
+<div class="d-flex flex-column pl-4">
+<span>
+<a class="item-title" href="https://www.cmu.edu">Course 1</a>
+</span>
+<div>
+<b>Teaching Assistant</b>
+</div>
+<div>
+                CMU, Spring 2023, Fall 2024
+              </div>
+</div>
+</div>
+</div>
+<div>
+<div class="d-flex flex-row pb-4 align-items-center">
+<img class="thumbnail img-responsive" src="data/images/thumbnails/class.png"/>
+<div class="d-flex flex-column pl-4">
+<span>
+<a class="item-title" href="https://www.cmu.edu">Course 2</a>
+</span>
+<div>
+<b>Teaching Assistant</b>
+</div>
+<div>
+                CMU, Spring 2021
+              </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<br/>
+<div class="text-center">
+<h6 class="font-weight-light"> 
+            Source code for this website is <a href="https://github.com/baileymiller/website">available on Github</a>
+</h6>
+</div>
+</div>
+</body></html>

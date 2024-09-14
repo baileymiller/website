@@ -1,150 +1,111 @@
 <!DOCTYPE html>
-<html>
- <head>
-  <link href="../../assets/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
-  <link href="../../assets/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-  <link href="../../assets/style.css" rel="stylesheet" type="text/css"/>
- </head>
- <body>
-  <div class="container">
-   <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-     <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-       <a href="../../">
-        <i class="fa fa-long-arrow-left">
-        </i>
-        home
-       </a>
-      </li>
-     </ul>
-    </div>
-   </nav>
-   <h1 class="card-title font-weight-normal">
-    Your Project Name
-   </h1>
-   <h5 class="font-weight-light">
-    <b>
-     Your Name
-    </b>
-    , Coauthor Name
-   </h5>
-   <img alt="Your Project Name-teaser" class="card-img-top mt-3" src="https://placehold.co/800x400.png"/>
-   <p class="font-italic mt-2">
-    placeholder caption
-   </p>
-   <div>
-    <h2 class="mt-4 font-weight-normal">
-     Abstract
-    </h2>
-    <hr/>
-    <p>
-     placeholder abstract
-    </p>
-   </div>
-   <div>
-    <h2 class="mt-4 font-weight-normal">
-     Resources
-    </h2>
-    <hr/>
-    <div>
-     <h4 class="mt-4 font-weight-light">
-      Publication
-     </h4>
-     <div class="container mt-1 mb-1">
-      <i class="fa fa-file-pdf-o">
-      </i>
-      <a href="../../data/papers/pub1.pdf">
-       Paper
-      </a>
-     </div>
-     <div class="container mt-1 mb-1">
-      <i class="fa fa-book">
-      </i>
-      <a href="https://www.acm.org/">
-       Publisher's Version
-      </a>
-     </div>
-     <div class="container mt-1 mb-1">
-      <i class="fa fa-archive">
-      </i>
-      <a href="https://arxiv.org">
-       ArXiv Version
-      </a>
-     </div>
-    </div>
-    <div>
-     <h4 class="mt-4 font-weight-light">
-      Code
-     </h4>
-     <div class="container mt-1 mb-1">
-      <i class="fa fa-github">
-      </i>
-      <a href="https://github.com">
-       Github project with full source code
-      </a>
-     </div>
-    </div>
-   </div>
-   <div>
-    <h2 class="mt-4 font-weight-normal">
-     Videos
-    </h2>
-    <hr/>
-    <div class="container">
-     <div class="img-container">
-      <h4 class="font-weight-light">
-       presentation slides
-      </h4>
-      <iframe allowfullscreen="" class="embed-responsive-item project-video" src="https://www.youtube.com/embed/J9o7kgrpco0">
-      </iframe>
-     </div>
-    </div>
-   </div>
-   <div>
-    <h2 class="mt-4 font-weight-normal">
-     Cite
-    </h2>
-    <hr/>
-    <script>
-     function copyText() {
+ <html><head><meta charset="utf-8"/><link href="../../assets/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/><link href="../../assets/bootstrap.min.css" rel="stylesheet" type="text/css"/><link href="../../assets/style.css" rel="stylesheet" type="text/css"/></head><body>
+<div class="container">
+<nav class="navbar navbar-expand-lg">
+<div class="container-fluid">
+<ul class="navbar-nav ml-auto">
+<li class="nav-item">
+<a href="../../">
+<i class="fa fa-fw fa-long-arrow-left"></i>
+                home
+                </a>
+</li>
+</ul>
+</div>
+</nav>
+<h1 class="card-title font-weight-normal">Your Project Name 1</h1>
+<h4 class="font-weight-light"><b>Your Name</b>, Coauthor Name and Coauthor Other</h4>
+<img alt="Your Project Name 1-teaser" class="card-img-top mt-3" src="../../data/images/project.png"/>
+<p class="font-italic mt-2">placeholder caption </p>
+<div>
+<h2 class="mt-4 font-weight-normal">Abstract</h2>
+<hr/>
+<p>placeholder abstract</p>
+</div>
+<div>
+<h2 class="mt-4 font-weight-normal">Resources</h2>
+<hr/>
+<div>
+<h4 class="mt-4 font-weight-light">
+          Publication
+        </h4>
+<div class="container mt-1 mb-1">
+<i class="fa fa-fw fa-file-pdf-o"></i>
+<a href="../../data/papers/pub1.pdf">
+            Paper
+          </a>
+</div>
+<div class="container mt-1 mb-1">
+<i class="fa fa-fw fa-book"></i>
+<a href="https://www.acm.org/">
+            Publisher's Version
+          </a>
+</div>
+<div class="container mt-1 mb-1">
+<i class="fa fa-fw fa-archive"></i>
+<a href="https://arxiv.org">
+            ArXiv Version
+          </a>
+</div>
+</div>
+<div>
+<h4 class="mt-4 font-weight-light">
+          Code
+        </h4>
+<div class="container mt-1 mb-1">
+<i class="fa fa-fw fa-github"></i>
+<a href="https://github.com">
+            Github project with full source code
+          </a>
+</div>
+</div>
+</div>
+<div>
+<h2 class="mt-4 font-weight-normal">Videos</h2>
+<hr/>
+<div class="container">
+<div class="img-container">
+<h4 class="font-weight-light">presentation slides</h4>
+<iframe allowfullscreen="" class="embed-responsive-item project-video" src="https://www.youtube.com/embed/tjYVcOJONdI">
+</iframe>
+</div>
+</div>
+</div>
+<div>
+<h2 class="mt-4 font-weight-normal">Cite</h2>
+<hr/>
+<script>
+      function copyText() {
         var text = document.getElementById("citation-to-copy")
         navigator.clipboard.writeText(text.innerText)
       }
-    </script>
-    <div class="code-background">
-     <button class="code-copy-btn" onclick="copyText()">
-      <i class="fa fa-clipboard">
-      </i>
-     </button>
-     <pre id="citation-to-copy">
+      </script>
+<div class="code-background">
+<button class="code-copy-btn" onclick="copyText()">
+<i class="fa fa-fw fa-clipboard"></i>
+</button>
+<pre id="citation-to-copy">
         
     @article{
-      Miller:BVC:2023,
-      title={Boundary Value Caching for Walk on Spheres},
+      Author:PAPER:2024,
+      title={Placeholder Title},
       volume={42},
       ISSN={1557-7368},
-      url={http://dx.doi.org/10.1145/3592400},
-      DOI={10.1145/3592400},
+      url={https://www.arxiv.org},
       number={4},
       journal={ACM Transactions on Graphics},
       publisher={Association for Computing Machinery (ACM)},
-      author={Miller, Bailey and Sawhney, Rohan and Crane, Keenan and Gkioulekas, Ioannis},
-      year={2023},
+      authors={YourName}
+      year={2024},
       month=jul, 
-      pages={1-11}
+      pages={1-100}
     }</pre>
-    </div>
-   </div>
-   <div>
-    <h2 class="mt-4 font-weight-normal">
-     Acknowledgements
-    </h2>
-    <hr/>
-    <p>
-     This work was generously supported by XYZ
-    </p>
-   </div>
-  </div>
- </body>
-</html>
+</div>
+</div>
+<div>
+<h2 class="mt-4 font-weight-normal">Acknowledgements</h2>
+<hr/>
+<p>This work was generously supported by XYZ</p>
+</div>
+</div>
+</body></html>

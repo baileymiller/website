@@ -9,21 +9,26 @@ STYLE_ASSETS = [
 ]
 
 class FontAwesomeIcons(str, Enum):
-  NONE        = ''
-  PDF         = 'fa fa-file-pdf-o'
-  ENVELOPE    = 'fa fa-envelope'
-  ARCHIVE     = 'fa fa-archive'
-  BOOK        = 'fa fa-book'
-  GITHUB      = 'fa fa-github'
-  ZIP         = 'fa fa-file-archive-o'
-  CODE        = 'fa fa-file-code-o'
-  COPY        = 'fa fa-clipboard'
-  GLOBE       = 'fa fa-globe'
-  BACK_ARROW  = 'fa fa-long-arrow-left'
-  GRAD_CAP    = 'fa fa-graduation-cap'
-  MAP_MARKER  = 'fa fa-map-marker'
-  FILE        = 'fa fa-file'
-  LINKEDIN    = 'fa fa-linkedin-square'
+  NONE        = ""
+  PDF         = "fa fa-fw fa-file-pdf-o"
+  ENVELOPE    = "fa fa-fw fa-envelope"
+  ARCHIVE     = "fa fa-fw fa-archive"
+  BOOK        = "fa fa-fw fa-book"
+  GITHUB      = "fa fa-fw fa-github"
+  ZIP         = "fa fa-fw fa-file-archive-o"
+  CODE        = "fa fa-fw fa-file-code-o"
+  COPY        = "fa fa-fw fa-clipboard"
+  GLOBE       = "fa fa-fw fa-globe"
+  BACK_ARROW  = "fa fa-fw fa-long-arrow-left"
+  GRAD_CAP    = "fa fa-fw fa-graduation-cap"
+  MAP_MARKER  = "fa fa-fw fa-map-marker"
+  FILE        = "fa fa-fw fa-file"
+  LINKEDIN    = "fa fa-fw fa-linkedin-square"
+  NEWS        = "fa fa-fw fa-newspaper-o"
+  DOWNLOAD    = "fa-solid fa-chevron-down"
+
+  def __str__(self):
+    return self.value
 
 class Person:
   def __init__(self, name, website, me = False):
@@ -35,16 +40,18 @@ class Publication:
   def __init__(self, 
                image, 
                title, 
+               url,
                authors = [], 
                joint_authors = {},
                venue = '', 
-               resources = []):
+               award = ''):
     self.image = image
-    self.title = title 
+    self.title = title
+    self.url = url 
     self.authors = authors 
     self.joint_authors = joint_authors
     self.venue = venue
-    self.resources = resources
+    self.award = award
 
   def get_author_suffix(self, author):
     suffix = ''
@@ -68,25 +75,12 @@ class Publication:
       else:
         names += name
       
-      if i < len(self.authors) - 1:
-        names += ', '
-      elif i == len(self.authors) - 2:
-        names += 'and'
-    
-    return names
+      if i == len(self.authors) - 2:
+        names += " and "
+      elif i < len(self.authors) - 1:
+        names += ", "
 
-  def get_resources(self):
-    resource_list = '' 
-    for resource in self.resources:
-      resource_list += f'''
-        <div class="pr-3">
-          <i class="{resource.icon}"></i>
-          <a href="{resource.path}">
-            {resource.name}
-          </a>
-        </div>
-      '''
-    return resource_list
+    return names
 
 class ProjectResources:
   def __init__(self, publication = [], code = []):
@@ -100,9 +94,12 @@ class Resource:
     self.name = name
 
 class Course:
-  def __init__(self, name, semesters = []):
+  def __init__(self, image, name, url, role, details):
+    self.image = image
     self.name = name
-    self.semesters = semesters
+    self.url = url
+    self.role = role
+    self.details = details
 
 class Video:
   def __init__(self, name, id):
@@ -158,23 +155,26 @@ class Home:
   def get_publications_list_html(self):
     pub_list = ''
     for _, pub in self.publications.items():
+      pub_award_text = f'''<div class="paper-award">{pub.award}</div>'''
       pub_list += f'''
         <div>
-          <div class="d-flex flex-row pb-4">
+          <div class="d-flex flex-row pb-4 align-items-center">
             <img
               src={pub.image}
-              class="publication-thumbnail img-responsive img-thumbnail"
+              class="thumbnail img-responsive"
             />
             <div class="d-flex flex-column pl-4">
-              <h5>{pub.title}</h5>
+              <span>
+                <a href={pub.url} class="item-title">{pub.title}</a>
+              </span>
               <div>
                 {pub.get_author_names()}
               </div>
               <div>
-                <i>{pub.venue}</i>
+                {pub.venue}
               </div>
-              <div class="d-flex flex-row justify-content-start pt-2">
-                {pub.get_resources()}
+              <div>
+                {pub_award_text if pub.award else ''}
               </div>
             </div>
           </div>
@@ -183,32 +183,29 @@ class Home:
     return pub_list
 
   def get_teaching_list_html(self):
-    teaching_list = '<ul>'
+    teaching_list = ''
     for course in self.courses:
-      course_links = ''
-      for i in range(len(course.semesters)):
-        trailing_mark = '' if i == len(course.semesters) - 1 else ', '
-        if len(course.semesters[i].path) > 0:
-          course_links += f'''
-            <a href="{course.semesters[i].path}">
-              {course.semesters[i].name + trailing_mark}
-            </a>
-          '''
-        else:
-          course_links += f'''
-            {course.semesters[i].name + trailing_mark}
-          '''
       teaching_list += f'''
-        <li>
-          <h6>
-            {course.name}
-            {course_links}
-          </h6
-        </li>
+        <div>
+          <div class="d-flex flex-row pb-4 align-items-center">
+            <img
+              src={course.image}
+              class="thumbnail img-responsive"
+            />
+            <div class="d-flex flex-column pl-4">
+              <span>
+                <a href={course.url} class="item-title">{course.name}</a>
+              </span>
+              <div>
+                <b>{course.role}</b>
+              </div>
+              <div>
+                {course.details}
+              </div>
+            </div>
+          </div>
+        </div>
       '''
-
-    teaching_list += '</ul>'
-
     return teaching_list
 
   def generate(self, path):
@@ -217,6 +214,8 @@ class Home:
     # add styling 
     head = soup.new_tag('head')
     soup.html.append(head)
+
+    head.append(soup.new_tag('meta', charset="UTF-8"))
     links = [
       soup.new_tag('link', rel='stylesheet', type='text/css', 
                    href=os.path.join('assets', style_asset))
@@ -239,24 +238,28 @@ class Home:
           <div>
             <p>{self.bio}</p>
           </div>
-          <div class="pt-2">
-            <h3>Publications</h3>
+          <div>
+            <h4>Publications</h4>
             <hr/>
-            <div id="publications-list" class="pt-1">
-              {publications_list}
-            </div>
-            <div class="pb-5">(*, &dagger; indicates equal contribution)</div>
+            {publications_list}
+            <div class="pb-5">(*, † indicate equal contribution)</div>
           </div>
           <div>
-            <h3>Teaching Assistant</h3>
+            <h4>Teaching</h4>
             <hr/>
             {teaching_list}
           </div>
         </div>
+        <br>
+        <div class="text-center">
+          <h6 class="font-weight-light"> 
+            Source code for this website is <a href=https://github.com/baileymiller/website>available on Github</a>
+          </h6>
+        </div>
       </div>
     ''', 'html.parser'))
     with open(os.path.join(path, 'index.html'), "w") as file:
-      file.write(str(soup.prettify(formatter="html")))
+      file.write(str(soup))
 
 class Project:
   def __init__(self, 
@@ -368,6 +371,7 @@ class Project:
 
     # add styling 
     head = soup.new_tag('head')
+    head.append(soup.new_tag('meta', charset="UTF-8"))
     soup.html.append(head)
     links = [
       soup.new_tag('link', rel='stylesheet', type='text/css', 
@@ -394,7 +398,7 @@ class Project:
           </div>
         </nav>
         <h1 class="card-title font-weight-normal">{publication.title}</h1>
-        <h5 class="font-weight-light"> {publication.get_author_names()} </h5>
+        <h4 class="font-weight-light">{publication.get_author_names()}</h4>
         <img src={project.image} class="card-img-top mt-3" alt="{publication.title}-teaser">
         <p class="font-italic mt-2">{project.image_caption} </p>
         {self.get_abstract_html()}
@@ -409,7 +413,7 @@ class Project:
       os.makedirs(path)
 
     with open(os.path.join(path, 'index.html'), "w") as file:
-      file.write(str(soup.prettify(formatter="html")))
+      file.write(str(soup))
 
 PEOPLE = {
   'your-name': Person(
@@ -420,12 +424,16 @@ PEOPLE = {
   'coauthor-name': Person(
     name = 'Coauthor Name',
     website = ''
+  ),
+  'coauthor-name-other': Person(
+    name = 'Coauthor Other',
+    website = ''
   )
 }
 
 ABOUT_ME = AboutMe(
   name = 'Your Name',
-  image = 'https://placehold.co/400', 
+  image = 'data/images/profile.png', 
   resources=[
     Resource(
       icon=FontAwesomeIcons.MAP_MARKER,
@@ -459,53 +467,58 @@ BIO = '''Add your bio here'''
 
 PUBLICATIONS = {
   'pub1': Publication(
-    image =  'https://placehold.co/400.png',
-    title =  'Your Project Name',
+    image =  'data/images/thumbnails/box.png',
+    title =  'Your Project Name 1',
+    url = 'project/pub1',
+    authors =  [
+      PEOPLE['your-name'],
+      PEOPLE['coauthor-name'],
+      PEOPLE['coauthor-name-other']
+    ],
+    venue = 'ACM Transactions on Graphics (SIGGRAPH), 2024',
+  ),
+  'pub2': Publication(
+    image =  'data/images/thumbnails/glass.png',
+    title =  'Your Project Name 2',
+    url = 'project/pub1',
     authors =  [
       PEOPLE['your-name'],
       PEOPLE['coauthor-name']
     ],
-    venue = 'ACM Transactions on Graphics',
-    resources = [
-      Resource(
-        icon = FontAwesomeIcons.GLOBE,
-        name = 'project',
-        path = 'project/pub1'
-      ),
-      Resource(
-        icon = FontAwesomeIcons.PDF,
-        name = 'paper',
-        path = 'data/papers/pub1.pdf'
-      ),
-      Resource(
-        icon = FontAwesomeIcons.BOOK,
-        name = 'publisher version',
-        path = 'https://www.acm.org/'
-      )
-    ]
+    venue = 'ACM Transactions on Graphics (SIGGRAPH), 2023',
+  ),
+  'pub3': Publication(
+    image =  'data/images/thumbnails/cloud.png',
+    title =  'Your Project Name 3',
+    url = 'project/pub1',
+    authors =  [
+      PEOPLE['your-name'],
+      PEOPLE['coauthor-name']
+    ],
+    venue = 'ACM Transactions on Graphics (SIGGRAPH), 2022',
   )
 }
 
 COURSES = [
   Course(
+    image = 'data/images/thumbnails/class.png',
     name = 'Course 1',
-    semesters = [
-      Resource(name='Fall 2023')
-    ]
+    url = 'https://www.cmu.edu',
+    role = 'Teaching Assistant',
+    details = 'CMU, Spring 2023, Fall 2024'
   ),
   Course(
+    image = 'data/images/thumbnails/class.png',
     name = 'Course 2',
-    semesters = [
-      Resource(
-        name='Spring 2021'
-      )
-    ]
+    url = 'https://www.cmu.edu',
+    role = 'Teaching Assistant',
+    details = 'CMU, Spring 2021'
   )
 ]
 
 PROJECT_PAGES = {
   'pub1': Project(
-    image = 'https://placehold.co/800x400.png',
+    image = '../../data/images/project.png',
     image_caption = 'placeholder caption',
     abstract = 'placeholder abstract',
     resources = ProjectResources(
@@ -537,25 +550,24 @@ PROJECT_PAGES = {
     videos = [
       Video(
         name =  'presentation slides',
-        id = 'J9o7kgrpco0'
+        id = 'tjYVcOJONdI'
       )
     ],
     acknowledgements = 'This work was generously supported by XYZ',
     citation = '''
     @article{
-      Miller:BVC:2023,
-      title={Boundary Value Caching for Walk on Spheres},
+      Author:PAPER:2024,
+      title={Placeholder Title},
       volume={42},
       ISSN={1557-7368},
-      url={http://dx.doi.org/10.1145/3592400},
-      DOI={10.1145/3592400},
+      url={https://www.arxiv.org},
       number={4},
       journal={ACM Transactions on Graphics},
       publisher={Association for Computing Machinery (ACM)},
-      author={Miller, Bailey and Sawhney, Rohan and Crane, Keenan and Gkioulekas, Ioannis},
-      year={2023},
+      authors={YourName}
+      year={2024},
       month=jul, 
-      pages={1-11}
+      pages={1-100}
     }'''
   )
 }
