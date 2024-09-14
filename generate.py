@@ -437,7 +437,7 @@ ABOUT_ME = AboutMe(
   resources=[
     Resource(
       icon=FontAwesomeIcons.MAP_MARKER,
-      name='Carnegie-Mellon University',
+      name='Carnegie Mellon University',
       path='https://www.cs.cmu.edu'
     ),
     Resource(
