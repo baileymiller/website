@@ -574,7 +574,7 @@ PROJECT_PAGES = {
 
 
 if __name__ == '__main__':
-  directory = 'www.your-website.com/'
+  directory = 'docs/'
   if not os.path.exists(directory):
     os.makedirs(directory)
 
