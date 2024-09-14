@@ -6,10 +6,6 @@ A barebones personal page generator written in Python. Easy to modify or extend.
 * run `generate.py` to create a static webpage in `docs`
 * serve the contents of `docs` as a static site
 
-## examples
-* [demo site](https://baileymiller.github.io/website/)
-* [my personal page](https://www.bailey-miller.com/)
-
 Website dependencies (included in `www.your-website.com/assets`)
 * https://getbootstrap.com/
 * https://fontawesome.com/
@@ -17,3 +13,6 @@ Website dependencies (included in `www.your-website.com/assets`)
 Python dependencies (i.e. generation script imports)
 * https://beautiful-soup-4.readthedocs.io/en/latest/
   
+Example websites using this template:
+* [demo site](https://baileymiller.github.io/website/)
+* [my personal page](https://www.bailey-miller.com/)
